@@ -1,5 +1,7 @@
 class BooksController < ApplicationController
 
+  http_basic_authenticate_with name:"admin", "password": "bookstore_admin"
+
   def index
     @books = Book.all 
   end
