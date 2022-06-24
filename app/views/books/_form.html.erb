@@ -1,0 +1,27 @@
+<%= form_with model: book do |form| %>
+  <div>
+     <%= form.label :isbn %> <br>
+     <%= form.text_field :isbn %> <br>
+     <% @book.errors.full_messages_for(:isbn).each do |message| %>
+      <div> <%= message %></div>
+     <% end %>
+  </div>
+    <div>
+     <%= form.label :name %> <br>
+     <%= form.text_field :name %> <br>
+     <% @book.errors.full_messages_for(:name).each do |message| %>
+      <div> <%= message %></div>
+     <% end %>
+  </div>
+  <div>
+     <%= form.label :description %> <br>
+     <%= form.text_field :description %>
+     <% @book.errors.full_messages_for(:description).each do |message| %>
+      <div> <%= message %></div>
+     <% end %>
+  </div>
+  <div>
+     <%= form.submit %>
+  </div>
+
+<% end %>

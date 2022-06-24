@@ -1,0 +1,19 @@
+<h3> <%= @book.isbn %> : <%= @book.name %> </h3>
+
+<hr/>
+
+<p> <%= @book.description %> </p>
+
+<ul>
+    <li>
+      <%= link_to "Edit", edit_book_path(@book) %>
+    </li>
+    <li>
+      <%= link_to "Destroy", book_path(@book), data:{
+        turbo_method: :delete,
+        turbo_confirm: "Are you sure?"
+      } %>
+    </li>
+</ul>
+
+<%= link_to "back home", books_path %>
