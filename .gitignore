@@ -64,3 +64,4 @@ build-iPhoneSimulator/
 .idea/
 .vscode/
 log/
+config/master.key
