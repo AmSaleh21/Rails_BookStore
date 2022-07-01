@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_24_160831) do
     t.integer "isbn"
     t.string "name"
     t.text "description"
+    t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

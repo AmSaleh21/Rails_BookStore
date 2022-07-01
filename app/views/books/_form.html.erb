@@ -14,6 +14,13 @@
      <% end %>
   </div>
   <div>
+     <%= form.label :image %> <br>
+     <%= form.text_field :image_url %> <br>
+     <% @book.errors.full_messages_for(:image_url).each do |message| %>
+      <div> <%= message %> </div>
+     <% end %>
+  </div>
+  <div>
      <%= form.label :description %> <br>
      <%= form.text_field :description %>
      <% @book.errors.full_messages_for(:description).each do |message| %>
