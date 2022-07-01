@@ -11,6 +11,42 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <nav>
+      <div>
+        <ul style="decoration:none;">
+          <li>
+              <%= link_to "Home",books_path %>
+          </li>
+        </ul>
+        <ul>
+          <% if user_signed_in?%>
+            <li>
+              <span>
+                <%= current_user.email %>
+              </span>
+            </li>
+            <li>
+              <%= button_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+          <% else %>
+            <li>
+              <%= button_to "sign in", new_user_session_path %>
+            </li>
+            <li>
+              <%= button_to "sign up", new_user_registration_path %>
+            </li>
+          <% end %>
+
+        </ul>
+
+      </div>
+    </nav>
+
+    <div>
+      <%= render partial: "partials/flashes" %>
+      <%= yield %>
+    </div>
+
   </body>
 </html>

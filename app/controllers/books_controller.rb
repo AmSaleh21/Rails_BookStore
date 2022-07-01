@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
-  http_basic_authenticate_with name:"admin", "password": "bookstore_admin"
+  before_action :authenticate_user! , only: [:new,:edit,:destroy]
+
 
   def index
     @books = Book.all 
@@ -16,8 +17,10 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
+    @book.user_id = current_user.id
     if @book.save
-      redirect_to @book
+      UserMailer..with(id:current_user.id).post_created.de
+      redirect_to @book, notice: "book created successfuly"
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +33,7 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      redirect_to @book
+      redirect_to @book, notice: "book updated successfuly"
     else
       render :edit, status: :unprocessable_entity
     end
